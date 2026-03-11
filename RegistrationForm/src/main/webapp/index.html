@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RegistrationForm - Главная</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); 
+            min-height: 100vh; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            padding: 20px;
+        }
+        .container { 
+            background: rgba(255, 255, 255, 0.05); 
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px; 
+            padding: 50px; 
+            max-width: 500px; 
+            width: 100%; 
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .icon { font-size: 80px; margin-bottom: 20px; }
+        h1 { color: #e94560; margin-bottom: 15px; font-size: 32px; }
+        .subtitle { color: #a0a0a0; margin-bottom: 30px; font-size: 16px; line-height: 1.6; }
+        .features { 
+            text-align: left; 
+            margin: 30px 0; 
+            padding: 25px; 
+            background: rgba(255, 255, 255, 0.03); 
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .features h3 { color: #ffffff; margin-bottom: 15px; font-size: 18px; }
+        .features ul { list-style: none; padding-left: 0; }
+        .features li { 
+            padding: 10px 0; 
+            color: #a0a0a0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .features li:before { content: "\2713"; color: #4CAF50; font-weight: bold; font-size: 18px; }
+        .btn { 
+            display: inline-block; 
+            padding: 16px 40px; 
+            background: linear-gradient(135deg, #e94560 0%, #c73e54 100%);
+            color: white; 
+            text-decoration: none; 
+            border-radius: 10px; 
+            font-size: 18px; 
+            font-weight: 600;
+            transition: all 0.3s;
+            margin: 10px;
+        }
+        .btn:hover { 
+            background: linear-gradient(135deg, #ff6b6b 0%, #e94560 100%);
+            box-shadow: 0 5px 20px rgba(233, 69, 96, 0.4);
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .footer { margin-top: 30px; color: #666; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">&#128100;</div>
+        <h1>RegistrationForm</h1>
+        <p class="subtitle">Веб-приложение для регистрации пользователей<br>с использованием технологии JavaBeans</p>
+        
+        <div class="features">
+            <h3>Технологии:</h3>
+            <ul>
+                <li>JavaBean для хранения данных пользователя</li>
+                <li>Servlet для обработки формы</li>
+                <li>JSP для динамических страниц</li>
+                <li>Валидация данных на сервере</li>
+                <li>Сессионное хранение данных</li>
+            </ul>
+        </div>
+        
+        <div>
+            <a href="register.jsp" class="btn">Зарегистрироваться</a>
+        </div>
+        
+        <div class="footer">
+            <p>2026 RegistrationForm. Учебный проект.</p>
+        </div>
+    </div>
+</body>
+</html>
