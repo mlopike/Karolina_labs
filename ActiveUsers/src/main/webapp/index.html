@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ActiveUsers - Стартовая страница</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); 
+            min-height: 100vh; 
+            padding: 20px;
+        }
+        .container { 
+            max-width: 1000px; 
+            margin: 0 auto; 
+        }
+        
+        /* Header */
+        .header { 
+            text-align: center; 
+            padding: 40px 20px; 
+            background: rgba(255, 255, 255, 0.05); 
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px; 
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        .header .icon { font-size: 80px; margin-bottom: 15px; }
+        .header h1 { color: #e94560; font-size: 36px; margin-bottom: 10px; }
+        .header p { color: #a0a0a0; font-size: 18px; }
+        
+        /* Main grid */
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 25px; 
+            margin-bottom: 30px;
+        }
+        
+        /* Cards */
+        .card { 
+            background: rgba(255, 255, 255, 0.05); 
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px; 
+            padding: 30px; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+        }
+        .card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 15px 50px rgba(233, 69, 96, 0.3);
+            border-color: rgba(233, 69, 96, 0.5);
+        }
+        .card .icon { font-size: 50px; margin-bottom: 15px; }
+        .card h2 { color: #ffffff; font-size: 22px; margin-bottom: 15px; }
+        .card p { color: #a0a0a0; line-height: 1.6; margin-bottom: 20px; }
+        .card .btn { 
+            display: block; 
+            width: 100%; 
+            padding: 14px; 
+            background: linear-gradient(135deg, #e94560 0%, #c73e54 100%);
+            color: white; 
+            text-align: center; 
+            text-decoration: none; 
+            border-radius: 10px; 
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .card .btn:hover { 
+            background: linear-gradient(135deg, #ff6b6b 0%, #e94560 100%);
+            box-shadow: 0 5px 20px rgba(233, 69, 96, 0.4);
+        }
+        .card .btn.secondary { 
+            background: rgba(255, 255, 255, 0.1); 
+            color: #ffffff; 
+        }
+        .card .btn.secondary:hover { 
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Features section */
+        .features { 
+            background: rgba(255, 255, 255, 0.05); 
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px; 
+            padding: 30px; 
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        .features h2 { color: #ffffff; margin-bottom: 20px; text-align: center; }
+        .features-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+            gap: 20px; 
+        }
+        .feature-item { 
+            text-align: center; 
+            padding: 20px; 
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+        .feature-item:hover {
+            background: rgba(233, 69, 96, 0.1);
+            border-color: rgba(233, 69, 96, 0.3);
+        }
+        .feature-item .icon { font-size: 40px; margin-bottom: 10px; }
+        .feature-item h3 { color: #ffffff; font-size: 16px; margin-bottom: 8px; }
+        .feature-item p { color: #a0a0a0; font-size: 14px; }
+        
+        /* Footer */
+        .footer { 
+            text-align: center; 
+            padding: 20px; 
+            color: #666; 
+        }
+        
+        /* Tech badges */
+        .tech-badges { 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 10px; 
+            justify-content: center; 
+            margin-top: 20px;
+        }
+        .badge { 
+            display: inline-block; 
+            padding: 6px 14px; 
+            background: rgba(233, 69, 96, 0.2); 
+            color: #e94560; 
+            border: 1px solid rgba(233, 69, 96, 0.3);
+            border-radius: 20px; 
+            font-size: 13px; 
+            font-weight: 500;
+        }
+        
+        /* Quick actions */
+        .quick-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+        .quick-card {
+            background: linear-gradient(135deg, rgba(233, 69, 96, 0.2) 0%, rgba(199, 62, 84, 0.2) 100%);
+            border: 1px solid rgba(233, 69, 96, 0.3);
+        }
+        .quick-card h2 { color: #e94560; }
+        .quick-card p { color: #a0a0a0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="icon">👥</div>
+            <h1>ActiveUsers</h1>
+            <p>Система отслеживания активных пользователей</p>
+            <div class="tech-badges">
+                <span class="badge">HttpSessionListener</span>
+                <span class="badge">ServletContextListener</span>
+                <span class="badge">Filter</span>
+                <span class="badge">Servlet</span>
+                <span class="badge">JSP</span>
+            </div>
+        </div>
+        
+        <!-- Main cards -->
+        <div class="grid">
+            <div class="card">
+                <div class="icon">📊</div>
+                <h2>Активные пользователи</h2>
+                <p>Просмотр текущего количества активных сессий и информации о пользователях в реальном времени.</p>
+                <a href="users.jsp" class="btn">Открыть</a>
+            </div>
+            
+            <div class="card">
+                <div class="icon">📈</div>
+                <h2>Статистика</h2>
+                <p>Подробная статистика по сессиям: общее количество пользователей, время работы, детали сессии.</p>
+                <a href="stats" class="btn">Открыть</a>
+            </div>
+            
+            <div class="card">
+                <div class="icon">📝</div>
+                <h2>О технологии</h2>
+                <p>Информация о использованных технологиях: слушатели, фильтры, сервлеты и их назначение.</p>
+                <a href="#tech" class="btn secondary" onclick="document.getElementById('tech').scrollIntoView({behavior: 'smooth'}); return false;">Узнать больше</a>
+            </div>
+        </div>
+        
+        <!-- Features section -->
+        <div class="features" id="tech">
+            <h2>🔧 Используемые технологии</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="icon">🎧</div>
+                    <h3>HttpSessionListener</h3>
+                    <p>Слушает события создания и уничтожения сессий</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">🌐</div>
+                    <h3>ServletContextListener</h3>
+                    <p>Слушает события запуска и остановки приложения</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">🔍</div>
+                    <h3>Filter</h3>
+                    <p>Перехватывает и логирует все HTTP-запросы</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">🖥️</div>
+                    <h3>Servlet</h3>
+                    <p>Обрабатывает запросы и генерирует ответы</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">📄</div>
+                    <h3>JSP</h3>
+                    <p>Динамические веб-страницы с Java-кодом</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">⚙️</div>
+                    <h3>web.xml</h3>
+                    <p>Дескриптор развёртывания веб-приложения</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- How it works -->
+        <div class="features">
+            <h2>📋 Как это работает</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="icon">1️⃣</div>
+                    <h3>Запуск приложения</h3>
+                    <p>ServletContextListener фиксирует старт</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">2️⃣</div>
+                    <h3>Запрос пользователя</h3>
+                    <p>Filter логирует все параметры запроса</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">3️⃣</div>
+                    <h3>Создание сессии</h3>
+                    <p>HttpSessionListener увеличивает счётчик</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">4️⃣</div>
+                    <h3>Отображение</h3>
+                    <p>Servlet/JSP показывают статистику</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Quick actions -->
+        <div class="quick-actions">
+            <div class="card quick-card">
+                <div class="icon" style="font-size: 40px;">🚀</div>
+                <h2>Быстрый старт</h2>
+                <p>Открыть страницу с пользователями</p>
+                <a href="users.jsp" class="btn">Перейти</a>
+            </div>
+            
+            <div class="card quick-card">
+                <div class="icon" style="font-size: 40px;">📊</div>
+                <h2>Статистика</h2>
+                <p>Просмотр детальной статистики</p>
+                <a href="stats" class="btn">Перейти</a>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>&copy; 2026 ActiveUsers. Веб-приложение с сессиями, событиями и фильтрами.</p>
+        </div>
+    </div>
+</body>
+</html>
